@@ -158,11 +158,22 @@ extension GameViewController : SCNSceneRendererDelegate {
         let ball = ballNode.presentation
         let ballPosition = ball.position
         
-        let targetPosition = SCNVector3(x: ballPosition.x, y: ballPosition.y + 5, z:ballPosition.z + 5)
+        /* --------------------------------------------------------- */
+        /* Calculating camera position                               */
+        /* --------------------------------------------------------- */
         var cameraPosition = selfieStickNode.position
+        var targetPosition = SCNVector3(x: ballPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
         
+        NotificationCenter.default.addObserver(forName: camera_joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
+            guard let userInfo = notification.userInfo else { return }
+            
+            let data = userInfo["cam_data"] as! AnalogJoystickData
+            
+            targetPosition = SCNVector3(x: targetPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: ballPosition.y + 3, z:ballPosition.z + 3)
+        }
+        
+        /* Damping the camera */
         let camDamping:Float = 0.3
-        
         let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
         let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
         let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
@@ -170,6 +181,8 @@ extension GameViewController : SCNSceneRendererDelegate {
         cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
         selfieStickNode.position = cameraPosition
         
+        /* --------------------------------------------------------- */
+        /* Apply force to object - Moving character                  */
         /* --------------------------------------------------------- */
         NotificationCenter.default.addObserver(forName: joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }

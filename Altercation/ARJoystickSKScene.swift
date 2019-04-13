@@ -21,6 +21,13 @@ class ARJoystickSKScene: SKScene {
         return js
     }()
     
+    lazy var cameraJoystick: AnalogJoystick = {
+        let js = AnalogJoystick(diameter: 100, colors: nil, images: (substrate: #imageLiteral(resourceName: "jSubstrate"), stick: #imageLiteral(resourceName: "jStick")))
+        js.position = CGPoint(x: ScreenSize.width - js.radius - 45, y: js.radius + 45)
+        js.zPosition = NodesZPosition.joystick.rawValue
+        return js
+    }()
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = .clear
         setupNodes()
@@ -33,9 +40,14 @@ class ARJoystickSKScene: SKScene {
     
     func setupJoystick() {
         addChild(analogJoystick)
+        addChild(cameraJoystick)
         
         analogJoystick.trackingHandler = { [unowned self] data in
             NotificationCenter.default.post(name: joystickNotificationName, object: nil, userInfo: ["data": data])
+        }
+        
+        cameraJoystick.trackingHandler = { [unowned self] data in
+            NotificationCenter.default.post(name: camera_joystickNotificationName, object: nil, userInfo: ["cam_data": data])
         }
         
     }
