@@ -12,4 +12,4 @@ var joystickNotificationName = NSNotification.Name("joystickNotificationName")
 let joystickVelocityMultiplier: CGFloat = 0.0005
 
 var camera_joystickNotificationName = NSNotification.Name("camera_joystickNotificationName")
-let camera_joystickVelocityMultiplier: CGFloat = 0.05
+let camera_joystickVelocityMultiplier: CGFloat = 0.000005

@@ -42,20 +42,6 @@ class GameViewController: UIViewController {
         setupSounds()
         setupSKView()
         setupSKViewScene()
-        
-        /*
-        NotificationCenter.default.addObserver(forName: joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
-            guard let userInfo = notification.userInfo else { return }
-         
-            let data = userInfo["data"] as! AnalogJoystickData
-            
-            //print(data.description)
-            
-            self.hero.position = SCNVector3(self.hero.position.x + Float(data.velocity.x * joystickVelocityMultiplier), self.hero.position.y, self.hero.position.z - Float(data.velocity.y * joystickVelocityMultiplier))
-        
-            self.hero.eulerAngles.y = Float(data.angular) + Float(180.0.degreesToRadians)
-        }
-        */
     }
     
     /* --------------------------------------------------------- */
@@ -161,25 +147,30 @@ extension GameViewController : SCNSceneRendererDelegate {
         /* --------------------------------------------------------- */
         /* Calculating camera position                               */
         /* --------------------------------------------------------- */
-        var cameraPosition = selfieStickNode.position
-        var targetPosition = SCNVector3(x: ballPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
+        //
         
+        var cameraPosition = self.selfieStickNode.position
         NotificationCenter.default.addObserver(forName: camera_joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
             
-            let data = userInfo["cam_data"] as! AnalogJoystickData
+            let data = userInfo["data"] as! AnalogJoystickData
+            
+            cameraPosition = self.selfieStickNode.position
+            var targetPosition = SCNVector3(x: cameraPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
             
             targetPosition = SCNVector3(x: targetPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: ballPosition.y + 3, z:ballPosition.z + 3)
+            
+            /* Damping the camera */
+            let camDamping:Float = 0.3
+            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
+            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
+            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
+            
+            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
+            self.selfieStickNode.position = cameraPosition
         }
+        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
         
-        /* Damping the camera */
-        let camDamping:Float = 0.3
-        let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
-        let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
-        let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
-        
-        cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
-        selfieStickNode.position = cameraPosition
         
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */

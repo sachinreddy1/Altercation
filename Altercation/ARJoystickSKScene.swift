@@ -47,7 +47,7 @@ class ARJoystickSKScene: SKScene {
         }
         
         cameraJoystick.trackingHandler = { [unowned self] data in
-            NotificationCenter.default.post(name: camera_joystickNotificationName, object: nil, userInfo: ["cam_data": data])
+            NotificationCenter.default.post(name: camera_joystickNotificationName, object: nil, userInfo: ["data": data])
         }
         
     }
