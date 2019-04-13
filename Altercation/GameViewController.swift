@@ -147,18 +147,15 @@ extension GameViewController : SCNSceneRendererDelegate {
         /* --------------------------------------------------------- */
         /* Calculating camera position                               */
         /* --------------------------------------------------------- */
-        //
-        
         var cameraPosition = self.selfieStickNode.position
         NotificationCenter.default.addObserver(forName: camera_joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
-            
             let data = userInfo["data"] as! AnalogJoystickData
             
             cameraPosition = self.selfieStickNode.position
-            var targetPosition = SCNVector3(x: cameraPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
-            
-            targetPosition = SCNVector3(x: targetPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: ballPosition.y + 3, z:ballPosition.z + 3)
+            /* --------------------------------------------------------- */
+            let targetPosition = SCNVector3(x: cameraPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: cameraPosition.y + Float(data.velocity.y * camera_joystickVelocityMultiplier), z: ballPosition.z + 3)
+            /* --------------------------------------------------------- */
             
             /* Damping the camera */
             let camDamping:Float = 0.3
@@ -169,8 +166,7 @@ extension GameViewController : SCNSceneRendererDelegate {
             cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
             self.selfieStickNode.position = cameraPosition
         }
-        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: ballPosition.y + 3, z:ballPosition.z + 3)
-        
+        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: cameraPosition.y, z:ballPosition.z + 3)
         
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */
