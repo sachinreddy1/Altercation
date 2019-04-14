@@ -153,8 +153,12 @@ extension GameViewController : SCNSceneRendererDelegate {
             let data = userInfo["data"] as! AnalogJoystickData
             
             cameraPosition = self.selfieStickNode.position
+            
+            /* Panning camera: y-axis */
             /* --------------------------------------------------------- */
-            let targetPosition = SCNVector3(x: cameraPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: cameraPosition.y + Float(data.velocity.y * camera_joystickVelocityMultiplier), z: ballPosition.z + 3)
+            let targetPosition = SCNVector3(x: cameraPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: cameraPosition.y + Float(data.velocity.y * camera_joystickVelocityMultiplier), z: ballPosition.z + 4)
+            /* --------------------------------------------------------- */
+            /* Rotating camera: x-axis */
             /* --------------------------------------------------------- */
             
             /* Damping the camera */
@@ -165,8 +169,9 @@ extension GameViewController : SCNSceneRendererDelegate {
             
             cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
             self.selfieStickNode.position = cameraPosition
+        
         }
-        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: cameraPosition.y, z:ballPosition.z + 3)
+        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: cameraPosition.y, z:ballPosition.z + 4)
         
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */
