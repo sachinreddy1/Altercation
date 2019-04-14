@@ -154,12 +154,16 @@ extension GameViewController : SCNSceneRendererDelegate {
             
             cameraPosition = self.selfieStickNode.position
             
+            /* --------------------------------------------------------- */
             /* Panning camera: y-axis */
             /* --------------------------------------------------------- */
             let targetPosition = SCNVector3(x: cameraPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: cameraPosition.y + Float(data.velocity.y * camera_joystickVelocityMultiplier), z: ballPosition.z + 4)
             /* --------------------------------------------------------- */
             /* Rotating camera: x-axis */
             /* --------------------------------------------------------- */
+            //self.selfieStickNode.rotate(by: <#T##SCNQuaternion#>, aroundTarget: self.ballNode.presentation.position)
+            //print(SCNVector4Make(self.selfieStickNode.position.x, self.selfieStickNode.position.y, self.selfieStickNode.position.z, 0))
+            print(self.selfieStickNode.worldOrientation)
             
             /* Damping the camera */
             let camDamping:Float = 0.3
@@ -169,7 +173,7 @@ extension GameViewController : SCNSceneRendererDelegate {
             
             cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
             self.selfieStickNode.position = cameraPosition
-        
+            
         }
         self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: cameraPosition.y, z:ballPosition.z + 4)
         
