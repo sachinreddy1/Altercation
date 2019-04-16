@@ -96,9 +96,9 @@ class GameViewController: UIViewController {
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
         skView.ignoresSiblingOrder = true
-        //    skView.showsFPS = true
-        //    skView.showsNodeCount = true
-        //    skView.showsPhysics = true
+            skView.showsFPS = true
+            skView.showsNodeCount = true
+            skView.showsPhysics = true
     }
     
     /* --------------------------------------------------------- */
@@ -158,37 +158,27 @@ extension GameViewController : SCNSceneRendererDelegate {
 
             cameraPosition = self.selfieStickNode.position
             /* --------------------------------------------------------- */
-            /* Panning camera: y-axis */
+            /* Panning and rotating the camera: y-axis */
             /* --------------------------------------------------------- */
             self.theta += Float(data.velocity.x * rotatejoystickVelocityMultiplier)
             x_ = 4 * sin(self.theta * Float.pi/180)
             z_ = 4 * cos(self.theta * Float.pi/180)
-            if (self.theta >= 360 || self.theta <= -360) {
-                self.theta = 0
+            if (self.theta >= 360 || self.theta <= -360) { self.theta = 0}
+            
+            cameraPosition = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
+            do {
+                self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
+                self.selfieStickNode.position = cameraPosition
             }
-            
-            // cameraPosition.y + Float(data.velocity.y * panjoystickVelocityMultiplier)
-            let targetPosition = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
-            /* --------------------------------------------------------- */
-            /* Rotating camera: x-axis */
-            /* --------------------------------------------------------- */
-            
-            /* Damping the camera */
-            let camDamping:Float = 0
-            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
-            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
-            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
-
-            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
-            self.selfieStickNode.eulerAngles = SCNVector3(GLKMathDegreesToRadians(-30), GLKMathDegreesToRadians(self.theta), 0)
-            self.selfieStickNode.position = cameraPosition
         }
-        self.selfieStickNode.position = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
-        
-        
+        do {
+            self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
+            self.selfieStickNode.position = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
+        }
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */
         /* --------------------------------------------------------- */
+        let velocitydamping = Float(0.0005)
         NotificationCenter.default.addObserver(forName: joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
             
@@ -198,9 +188,10 @@ extension GameViewController : SCNSceneRendererDelegate {
             let z_prime = Float(data.velocity.x * joystickVelocityMultiplier) * sin(self.theta * Float.pi/180) + Float(data.velocity.y * joystickVelocityMultiplier) * cos(self.theta * Float.pi/180)
             
             self.motionForce = SCNVector3(x: x_prime, y:0, z: -z_prime)
-            
+            self.ballNode.physicsBody?.velocity += SCNVector3(x: self.motionForce.x * velocitydamping, y: 0, z: self.motionForce.z * velocitydamping)
         }
-        ballNode.physicsBody?.velocity += motionForce
+        
+        ballNode.physicsBody?.velocity += SCNVector3(x: motionForce.x * velocitydamping, y:0, z: -motionForce.z * velocitydamping)
         
     }
 }
