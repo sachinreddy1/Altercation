@@ -151,31 +151,31 @@ extension GameViewController : SCNSceneRendererDelegate {
         NotificationCenter.default.addObserver(forName: camera_joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
             let data = userInfo["data"] as! AnalogJoystickData
-            
+
             cameraPosition = self.selfieStickNode.position
-            
             /* --------------------------------------------------------- */
             /* Panning camera: y-axis */
             /* --------------------------------------------------------- */
-            let targetPosition = SCNVector3(x: cameraPosition.x + Float(data.velocity.x * camera_joystickVelocityMultiplier), y: cameraPosition.y + Float(data.velocity.y * camera_joystickVelocityMultiplier), z: ballPosition.z + 4)
+            let targetPosition = SCNVector3(x: ballPosition.x, y: cameraPosition.y + Float(data.velocity.y * panjoystickVelocityMultiplier), z: ballPosition.z + 4)
             /* --------------------------------------------------------- */
             /* Rotating camera: x-axis */
             /* --------------------------------------------------------- */
-            //self.selfieStickNode.rotate(by: <#T##SCNQuaternion#>, aroundTarget: self.ballNode.presentation.position)
-            //print(SCNVector4Make(self.selfieStickNode.position.x, self.selfieStickNode.position.y, self.selfieStickNode.position.z, 0))
-            print(self.selfieStickNode.worldOrientation)
-            
+            let orientation = SCNVector4(0,1,0,Float(Double.pi/4e100))
+            /* --------------------------------------------------------- */
+            //print(Float(data.velocity.x * rotatejoystickVelocityMultiplier))
             /* Damping the camera */
-            let camDamping:Float = 0.3
-            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
-            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
-            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
+//            let camDamping:Float = 0.3
+//            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
+//            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
+//            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
+//
+//            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
+//            self.selfieStickNode.position = cameraPosition
             
-            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
-            self.selfieStickNode.position = cameraPosition
-            
+            self.selfieStickNode.rotate(by: orientation, aroundTarget: ballPosition)
         }
-        self.selfieStickNode.position = SCNVector3(x: cameraPosition.x, y: cameraPosition.y, z:ballPosition.z + 4)
+        //self.selfieStickNode.position = SCNVector3(x: ballPosition.x, y: cameraPosition.y, z:ballPosition.z + 4)
+        
         
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */
