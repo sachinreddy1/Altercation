@@ -20,6 +20,7 @@ class GameViewController: UIViewController {
     
     var motion = MotionHelper()
     var motionForce = SCNVector3(0, 0, 0)
+    var theta = Float(0)
     var sounds:[String:SCNAudioSource] = [:]
     
     /* ---------------------------------------------------- */
@@ -148,6 +149,9 @@ extension GameViewController : SCNSceneRendererDelegate {
         /* Calculating camera position                               */
         /* --------------------------------------------------------- */
         var cameraPosition = self.selfieStickNode.position
+        var x_ = 4 * sin(self.theta * Float.pi/180)
+        var z_ = 4 * cos(self.theta * Float.pi/180)
+        
         NotificationCenter.default.addObserver(forName: camera_joystickNotificationName, object: nil, queue: OperationQueue.main) { (notification) in
             guard let userInfo = notification.userInfo else { return }
             let data = userInfo["data"] as! AnalogJoystickData
@@ -156,25 +160,30 @@ extension GameViewController : SCNSceneRendererDelegate {
             /* --------------------------------------------------------- */
             /* Panning camera: y-axis */
             /* --------------------------------------------------------- */
-            let targetPosition = SCNVector3(x: ballPosition.x, y: cameraPosition.y + Float(data.velocity.y * panjoystickVelocityMultiplier), z: ballPosition.z + 4)
+            self.theta += Float(data.velocity.x * rotatejoystickVelocityMultiplier)
+            x_ = 4 * sin(self.theta * Float.pi/180)
+            z_ = 4 * cos(self.theta * Float.pi/180)
+            if (self.theta >= 360 || self.theta <= -360) {
+                self.theta = 0
+            }
+            
+            // cameraPosition.y + Float(data.velocity.y * panjoystickVelocityMultiplier)
+            let targetPosition = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
             /* --------------------------------------------------------- */
             /* Rotating camera: x-axis */
             /* --------------------------------------------------------- */
-            let orientation = SCNVector4(0,1,0,Float(Double.pi/4e100))
-            /* --------------------------------------------------------- */
-            //print(Float(data.velocity.x * rotatejoystickVelocityMultiplier))
-            /* Damping the camera */
-//            let camDamping:Float = 0.3
-//            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
-//            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
-//            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
-//
-//            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
-//            self.selfieStickNode.position = cameraPosition
             
-            self.selfieStickNode.rotate(by: orientation, aroundTarget: ballPosition)
+            /* Damping the camera */
+            let camDamping:Float = 0
+            let xComponent = cameraPosition.x * (1 - camDamping) + targetPosition.x * camDamping
+            let yComponent = cameraPosition.y * (1 - camDamping) + targetPosition.y * camDamping
+            let zComponent = cameraPosition.z * (1 - camDamping) + targetPosition.z * camDamping
+
+            cameraPosition = SCNVector3(x: xComponent, y: yComponent, z: zComponent)
+            self.selfieStickNode.eulerAngles = SCNVector3(GLKMathDegreesToRadians(-30), GLKMathDegreesToRadians(self.theta), 0)
+            self.selfieStickNode.position = cameraPosition
         }
-        //self.selfieStickNode.position = SCNVector3(x: ballPosition.x, y: cameraPosition.y, z:ballPosition.z + 4)
+        self.selfieStickNode.position = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
         
         
         /* --------------------------------------------------------- */
@@ -185,7 +194,11 @@ extension GameViewController : SCNSceneRendererDelegate {
             
             let data = userInfo["data"] as! AnalogJoystickData
             
-            self.motionForce = SCNVector3(x: Float(data.velocity.x * joystickVelocityMultiplier), y:0, z: -Float(data.velocity.y * joystickVelocityMultiplier))
+            let x_prime = Float(data.velocity.x * joystickVelocityMultiplier) * cos(self.theta * Float.pi/180) - Float(data.velocity.y * joystickVelocityMultiplier) * sin(self.theta * Float.pi/180)
+            let z_prime = Float(data.velocity.x * joystickVelocityMultiplier) * sin(self.theta * Float.pi/180) + Float(data.velocity.y * joystickVelocityMultiplier) * cos(self.theta * Float.pi/180)
+            
+            self.motionForce = SCNVector3(x: x_prime, y:0, z: -z_prime)
+            
         }
         ballNode.physicsBody?.velocity += motionForce
         
