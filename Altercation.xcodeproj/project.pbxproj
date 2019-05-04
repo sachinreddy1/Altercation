@@ -18,6 +18,8 @@
 		64083C4C226172E3009B44C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64083C4B226172E3009B44C7 /* Assets.xcassets */; };
 		640A2D4522620D5200BC7E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 640A2D4422620D5200BC7E0C /* Assets.xcassets */; };
 		641821F822621AA300AF4010 /* ARJoystickSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641821F722621AA300AF4010 /* ARJoystickSKScene.swift */; };
+		64216D7C227D057F0044B9CF /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64216D7B227D057F0044B9CF /* StartScene.swift */; };
+		64216D7E227D10A90044B9CF /* ScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64216D7D227D10A90044B9CF /* ScrollingBackground.swift */; };
 		64FE927922595569006D3C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE927822595569006D3C6E /* AppDelegate.swift */; };
 		64FE927D22595569006D3C6E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE927C22595569006D3C6E /* GameViewController.swift */; };
 		64FE928022595569006D3C6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FE927E22595569006D3C6E /* Main.storyboard */; };
@@ -56,6 +58,8 @@
 		64083C4B226172E3009B44C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		640A2D4422620D5200BC7E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641821F722621AA300AF4010 /* ARJoystickSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARJoystickSKScene.swift; sourceTree = "<group>"; };
+		64216D7B227D057F0044B9CF /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
+		64216D7D227D10A90044B9CF /* ScrollingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBackground.swift; sourceTree = "<group>"; };
 		64FE927522595569006D3C6E /* Altercation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altercation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FE927822595569006D3C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FE927C22595569006D3C6E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				64083C442260F57E009B44C7 /* AnalogJoystick.swift */,
 				641821F722621AA300AF4010 /* ARJoystickSKScene.swift */,
 				64FE927C22595569006D3C6E /* GameViewController.swift */,
+				64216D7B227D057F0044B9CF /* StartScene.swift */,
+				64216D7D227D10A90044B9CF /* ScrollingBackground.swift */,
 				64083C46226119F9009B44C7 /* Extensions.swift */,
 				64083C49226172C7009B44C7 /* Constants.swift */,
 				64FE92862259556B006D3C6E /* Info.plist */,
@@ -325,7 +331,9 @@
 				64FE927D22595569006D3C6E /* GameViewController.swift in Sources */,
 				64083C4A226172C7009B44C7 /* Constants.swift in Sources */,
 				64FE927922595569006D3C6E /* AppDelegate.swift in Sources */,
+				64216D7C227D057F0044B9CF /* StartScene.swift in Sources */,
 				64000ADB225BE9ED00674037 /* MotionHelper.swift in Sources */,
+				64216D7E227D10A90044B9CF /* ScrollingBackground.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

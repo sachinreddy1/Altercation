@@ -14,6 +14,7 @@ class GameViewController: UIViewController {
     
     let CategoryTree = 2
     var sceneView:SCNView!
+    var skView:SKView!
     var scene:SCNScene!
     var ballNode:SCNNode!
     var selfieStickNode:SCNNode!
@@ -44,6 +45,16 @@ class GameViewController: UIViewController {
         setupSKView()
         setupSKViewScene()
     }
+    
+    func setupStartScene(){
+        skView = self.view as? SKView
+        skView.delegate = self
+        
+        //sceneView.allowsCameraControl = true
+        scene = SKScene(named: "art.scnassets/MainScene.scn")
+        sceneView.scene = scene
+    }
+    
     
     /* --------------------------------------------------------- */
     /* setupScene: Sets up the scene                             */
@@ -169,11 +180,13 @@ extension GameViewController : SCNSceneRendererDelegate {
             do {
                 self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
                 self.selfieStickNode.position = cameraPosition
+                self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
             }
         }
         do {
             self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
             self.selfieStickNode.position = SCNVector3(x: ballPosition.x + x_, y: cameraPosition.y, z: ballPosition.z + z_)
+            self.selfieStickNode.eulerAngles = SCNVector3(-30 * Float.pi/180, self.theta * Float.pi/180, 0)
         }
         /* --------------------------------------------------------- */
         /* Apply force to object - Moving character                  */
