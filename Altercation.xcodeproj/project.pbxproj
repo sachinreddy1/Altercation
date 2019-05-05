@@ -15,7 +15,6 @@
 		64083C452260F57E009B44C7 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C442260F57E009B44C7 /* AnalogJoystick.swift */; };
 		64083C47226119F9009B44C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C46226119F9009B44C7 /* Extensions.swift */; };
 		64083C4A226172C7009B44C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C49226172C7009B44C7 /* Constants.swift */; };
-		64083C4C226172E3009B44C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64083C4B226172E3009B44C7 /* Assets.xcassets */; };
 		640A2D4522620D5200BC7E0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 640A2D4422620D5200BC7E0C /* Assets.xcassets */; };
 		641821F822621AA300AF4010 /* ARJoystickSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641821F722621AA300AF4010 /* ARJoystickSKScene.swift */; };
 		64216D7C227D057F0044B9CF /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64216D7B227D057F0044B9CF /* StartScene.swift */; };
@@ -56,7 +55,6 @@
 		64083C442260F57E009B44C7 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		64083C46226119F9009B44C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		64083C49226172C7009B44C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		64083C4B226172E3009B44C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		640A2D4422620D5200BC7E0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		641821F722621AA300AF4010 /* ARJoystickSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARJoystickSKScene.swift; sourceTree = "<group>"; };
 		64216D7B227D057F0044B9CF /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		64000AD3225BE99500674037 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				64083C4B226172E3009B44C7 /* Assets.xcassets */,
 				64000AD8225BE9C800674037 /* jump.wav */,
 				64000AD6225BE9BB00674037 /* chainsaw.wav */,
 				64000AD4225BE9B000674037 /* background.mp3 */,
@@ -308,7 +305,6 @@
 				64000AD5225BE9B000674037 /* background.mp3 in Resources */,
 				64000AD7225BE9BB00674037 /* chainsaw.wav in Resources */,
 				64000AD9225BE9C800674037 /* jump.wav in Resources */,
-				64083C4C226172E3009B44C7 /* Assets.xcassets in Resources */,
 				64FE92AB22596C38006D3C6E /* art.scnassets in Resources */,
 				640A2D4522620D5200BC7E0C /* Assets.xcassets in Resources */,
 				64FE928022595569006D3C6E /* Main.storyboard in Resources */,

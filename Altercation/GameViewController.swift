@@ -49,13 +49,11 @@ class GameViewController: UIViewController {
     
     func setupStartScene(){
         super.viewDidLoad()
-        
         if let view = self.view as? SKView {
             if let scene = SKScene(fileNamed: "StartScene") {
                 print("scene obtained ")
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
                 // Present the scene
                 view.presentScene(scene)
             }
