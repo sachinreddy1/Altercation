@@ -9,12 +9,12 @@
 import UIKit
 import SceneKit
 import SpriteKit
+import GameplayKit
 
 class GameViewController: UIViewController {
     
     let CategoryTree = 2
     var sceneView:SCNView!
-    var skView:SKView!
     var scene:SCNScene!
     var ballNode:SCNNode!
     var selfieStickNode:SCNNode!
@@ -39,22 +39,35 @@ class GameViewController: UIViewController {
                     sounds                                       */
     /* --------------------------------------------------------- */
     override func viewDidLoad() {
-        setupScene()
-        setupNodes()
-        setupSounds()
-        setupSKView()
-        setupSKViewScene()
+        setupStartScene()
+//        setupScene()
+//        setupNodes()
+//        setupSounds()
+//        setupSKView()
+//        setupSKViewScene()
     }
     
     func setupStartScene(){
-        skView = self.view as? SKView
-        skView.delegate = self
+        super.viewDidLoad()
         
-        //sceneView.allowsCameraControl = true
-        scene = SKScene(named: "art.scnassets/MainScene.scn")
-        sceneView.scene = scene
+        if let view = self.view as? SKView {
+            if let scene = SKScene(fileNamed: "StartScene") {
+                print("scene obtained ")
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+            }
+            
+            view.ignoresSiblingOrder = true
+            view.showsFPS = true
+            view.showsNodeCount = true
+        }
+        else {
+            print("scene not obtained ")
+        }
     }
-    
     
     /* --------------------------------------------------------- */
     /* setupScene: Sets up the scene                             */

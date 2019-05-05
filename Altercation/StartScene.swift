@@ -32,23 +32,23 @@ class StartScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
-        if let touch = touches.first {
-            let pos = touch.location(in: self)
-            let node = self.atPoint(pos)
-            
-            if node == playButton {
-//                let transition = SKTransition.fade(withDuration: 1)
+//        if let touch = touches.first {
+//            let pos = touch.location(in: self)
+//            let node = self.atPoint(pos)
+//            
+//            if node == playButton {
+////                let transition = SKTransition.fade(withDuration: 1)
+////                gameScene = SCNScene(named: "art.scnassets/MainScene.scn")
+////                self.view?.presentScene(gameScene, transition: transition)
+//                
+//                
+//                //sceneView = self.view as? SCNView
 //                gameScene = SCNScene(named: "art.scnassets/MainScene.scn")
-//                self.view?.presentScene(gameScene, transition: transition)
-                
-                
-                //sceneView = self.view as? SCNView
-                gameScene = SCNScene(named: "art.scnassets/MainScene.scn")
-                self.view?.presentScene(gameScene)
-                //sceneView.scene = gameScene
-                
-            }
-        }
+//                self.view?.presentScene(gameScene)
+//                //sceneView.scene = gameScene
+//                
+//            }
+//        }
     }
     
     override func update(_ currentTime: TimeInterval) {

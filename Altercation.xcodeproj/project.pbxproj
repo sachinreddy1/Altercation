@@ -20,6 +20,7 @@
 		641821F822621AA300AF4010 /* ARJoystickSKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641821F722621AA300AF4010 /* ARJoystickSKScene.swift */; };
 		64216D7C227D057F0044B9CF /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64216D7B227D057F0044B9CF /* StartScene.swift */; };
 		64216D7E227D10A90044B9CF /* ScrollingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64216D7D227D10A90044B9CF /* ScrollingBackground.swift */; };
+		64216D81227E35240044B9CF /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 64216D80227E35230044B9CF /* StartScene.sks */; };
 		64FE927922595569006D3C6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE927822595569006D3C6E /* AppDelegate.swift */; };
 		64FE927D22595569006D3C6E /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FE927C22595569006D3C6E /* GameViewController.swift */; };
 		64FE928022595569006D3C6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64FE927E22595569006D3C6E /* Main.storyboard */; };
@@ -60,6 +61,7 @@
 		641821F722621AA300AF4010 /* ARJoystickSKScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARJoystickSKScene.swift; sourceTree = "<group>"; };
 		64216D7B227D057F0044B9CF /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		64216D7D227D10A90044B9CF /* ScrollingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingBackground.swift; sourceTree = "<group>"; };
+		64216D80227E35230044B9CF /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		64FE927522595569006D3C6E /* Altercation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Altercation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64FE927822595569006D3C6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64FE927C22595569006D3C6E /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 			path = Base.lproj;
 			sourceTree = "<group>";
 		};
+		64216D7F227E342A0044B9CF /* Game Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				64216D80227E35230044B9CF /* StartScene.sks */,
+			);
+			path = "Game Scenes";
+			sourceTree = "<group>";
+		};
 		64FE926C22595569006D3C6E = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +156,7 @@
 				64000ADE225BEB5100674037 /* Base.lproj */,
 				64FE92AC225A4650006D3C6E /* Helper */,
 				64000AD3225BE99500674037 /* Sounds */,
+				64216D7F227E342A0044B9CF /* Game Scenes */,
 				64FE92AA22596C38006D3C6E /* art.scnassets */,
 				640A2D4422620D5200BC7E0C /* Assets.xcassets */,
 				64FE927822595569006D3C6E /* AppDelegate.swift */,
@@ -292,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64216D81227E35240044B9CF /* StartScene.sks in Resources */,
 				64FE92852259556B006D3C6E /* LaunchScreen.storyboard in Resources */,
 				64000AD5225BE9B000674037 /* background.mp3 in Resources */,
 				64000AD7225BE9BB00674037 /* chainsaw.wav in Resources */,
