@@ -9,7 +9,6 @@
 import UIKit
 import SceneKit
 import SpriteKit
-import GameplayKit
 
 class GameViewController: UIViewController {
     
@@ -38,33 +37,12 @@ class GameViewController: UIViewController {
     /* viewDidLoad: Runs the operations to load scene, nodes, and
                     sounds                                       */
     /* --------------------------------------------------------- */
-    override func viewDidLoad() {
-        setupStartScene()
-//        setupScene()
-//        setupNodes()
-//        setupSounds()
-//        setupSKView()
-//        setupSKViewScene()
-    }
-    
-    func setupStartScene(){
-        super.viewDidLoad()
-        if let view = self.view as? SKView {
-            if let scene = SKScene(fileNamed: "StartScene") {
-                print("scene obtained ")
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
-        else {
-            print("scene not obtained ")
-        }
+    override func viewDidLoad() {        
+        setupScene()
+        setupNodes()
+        setupSounds()
+        setupSKView()
+        setupSKViewScene()
     }
     
     /* --------------------------------------------------------- */

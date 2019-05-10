@@ -12,6 +12,10 @@
 		64000AD9225BE9C800674037 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 64000AD8225BE9C800674037 /* jump.wav */; };
 		64000ADB225BE9ED00674037 /* MotionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64000ADA225BE9ED00674037 /* MotionHelper.swift */; };
 		64000ADD225BEADB00674037 /* VectorOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64000ADC225BEADB00674037 /* VectorOperations.swift */; };
+		6402886B2285C58E000AB436 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402886A2285C58E000AB436 /* StartViewController.swift */; };
+		6402886D2285E13A000AB436 /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6402886C2285E13A000AB436 /* MainMenuScene.sks */; };
+		6402886F2285E644000AB436 /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402886E2285E644000AB436 /* MainMenuScene.swift */; };
+		6402887122860F3C000AB436 /* MainMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6402887022860F3C000AB436 /* MainMenuController.swift */; };
 		64083C452260F57E009B44C7 /* AnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C442260F57E009B44C7 /* AnalogJoystick.swift */; };
 		64083C47226119F9009B44C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C46226119F9009B44C7 /* Extensions.swift */; };
 		64083C4A226172C7009B44C7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64083C49226172C7009B44C7 /* Constants.swift */; };
@@ -52,6 +56,10 @@
 		64000AD8225BE9C800674037 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
 		64000ADA225BE9ED00674037 /* MotionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionHelper.swift; sourceTree = "<group>"; };
 		64000ADC225BEADB00674037 /* VectorOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorOperations.swift; sourceTree = "<group>"; };
+		6402886A2285C58E000AB436 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		6402886C2285E13A000AB436 /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		6402886E2285E644000AB436 /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
+		6402887022860F3C000AB436 /* MainMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuController.swift; sourceTree = "<group>"; };
 		64083C442260F57E009B44C7 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		64083C46226119F9009B44C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		64083C49226172C7009B44C7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				64216D80227E35230044B9CF /* StartScene.sks */,
+				6402886C2285E13A000AB436 /* MainMenuScene.sks */,
 			);
 			path = "Game Scenes";
 			sourceTree = "<group>";
@@ -159,8 +168,11 @@
 				64FE927822595569006D3C6E /* AppDelegate.swift */,
 				64083C442260F57E009B44C7 /* AnalogJoystick.swift */,
 				641821F722621AA300AF4010 /* ARJoystickSKScene.swift */,
+				6402886A2285C58E000AB436 /* StartViewController.swift */,
+				6402887022860F3C000AB436 /* MainMenuController.swift */,
 				64FE927C22595569006D3C6E /* GameViewController.swift */,
 				64216D7B227D057F0044B9CF /* StartScene.swift */,
+				6402886E2285E644000AB436 /* MainMenuScene.swift */,
 				64216D7D227D10A90044B9CF /* ScrollingBackground.swift */,
 				64083C46226119F9009B44C7 /* Extensions.swift */,
 				64083C49226172C7009B44C7 /* Constants.swift */,
@@ -301,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64216D81227E35240044B9CF /* StartScene.sks in Resources */,
+				6402886D2285E13A000AB436 /* MainMenuScene.sks in Resources */,
 				64FE92852259556B006D3C6E /* LaunchScreen.storyboard in Resources */,
 				64000AD5225BE9B000674037 /* background.mp3 in Resources */,
 				64000AD7225BE9BB00674037 /* chainsaw.wav in Resources */,
@@ -337,7 +350,10 @@
 				64083C47226119F9009B44C7 /* Extensions.swift in Sources */,
 				64083C452260F57E009B44C7 /* AnalogJoystick.swift in Sources */,
 				64FE927D22595569006D3C6E /* GameViewController.swift in Sources */,
+				6402886B2285C58E000AB436 /* StartViewController.swift in Sources */,
+				6402886F2285E644000AB436 /* MainMenuScene.swift in Sources */,
 				64083C4A226172C7009B44C7 /* Constants.swift in Sources */,
+				6402887122860F3C000AB436 /* MainMenuController.swift in Sources */,
 				64FE927922595569006D3C6E /* AppDelegate.swift in Sources */,
 				64216D7C227D057F0044B9CF /* StartScene.swift in Sources */,
 				64000ADB225BE9ED00674037 /* MotionHelper.swift in Sources */,
