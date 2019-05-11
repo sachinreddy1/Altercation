@@ -35,16 +35,16 @@
                     <view key="view" contentMode="scaleToFill" id="X5R-oi-OIN" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="JQO-9r-Ja5"/>
                     </view>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="show" identifier="id2" id="t6q-si-lfB"/>
+                        <segue destination="BV1-FR-VrT" kind="show" identifier="id2" id="YBc-QD-ia6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PpP-6M-qYC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10" y="-660"/>
+            <point key="canvasLocation" x="30" y="-660"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">

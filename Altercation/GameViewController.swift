@@ -37,7 +37,8 @@ class GameViewController: UIViewController {
     /* viewDidLoad: Runs the operations to load scene, nodes, and
                     sounds                                       */
     /* --------------------------------------------------------- */
-    override func viewDidLoad() {        
+    override func viewDidLoad() {
+        print("scnview loaded")
         setupScene()
         setupNodes()
         setupSounds()

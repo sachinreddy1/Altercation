@@ -13,11 +13,13 @@ import SpriteKit
 class StartScene: SKScene {
     
     var playButton:SKSpriteNode?
+    var levelButton:SKSpriteNode?
     var gameScene:SCNScene!
     var scrollingBG:ScrollingBackground?
     
     override func didMove(to view: SKView) {
         playButton = self.childNode(withName: "startButton") as? SKSpriteNode
+        levelButton = self.childNode(withName: "levelButton") as? SKSpriteNode
         
         scrollingBG = ScrollingBackground.scrollingNodeWithImage(imageName: "loopBG", containerWidth: self.size.width)
         scrollingBG?.scrollingSpeed = 1.5
@@ -27,6 +29,7 @@ class StartScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
@@ -34,8 +37,14 @@ class StartScene: SKScene {
             if node == playButton {
                 let vc = self.view?.window?.rootViewController!;
                 vc?.performSegue(withIdentifier: "id1", sender: nil)
-                
             }
+            
+            if node == levelButton {
+                let vc = self.view?.window?.rootViewController!;
+                vc?.performSegue(withIdentifier: "id2", sender: nil)
+                print("Touch.")
+            }
+            
         }
     }
     

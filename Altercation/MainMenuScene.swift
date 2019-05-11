@@ -1,8 +1,8 @@
 //
-//  MainMenuScene.swift
+//  StartScene.swift
 //  Altercation
 //
-//  Created by Sachin Reddy on 5/10/19.
+//  Created by Sachin Reddy on 5/3/19.
 //  Copyright © 2019 Sachin Reddy. All rights reserved.
 //
 
@@ -12,13 +12,12 @@ import SpriteKit
 
 class MainMenuScene: SKScene {
     
-    var levelButton:SKSpriteNode?
+    var playButton:SKSpriteNode?
     var gameScene:SCNScene!
     var scrollingBG:ScrollingBackground?
     
-    
     override func didMove(to view: SKView) {
-        levelButton = self.childNode(withName: "levelButton") as? SKSpriteNode
+        playButton = self.childNode(withName: "startButton") as? SKSpriteNode
         
         scrollingBG = ScrollingBackground.scrollingNodeWithImage(imageName: "loopBG", containerWidth: self.size.width)
         scrollingBG?.scrollingSpeed = 1.5
@@ -28,17 +27,17 @@ class MainMenuScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if let touch = touches.first {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
-            print("something")
-            
-            if node == levelButton {
-                print("button pressed")
+            print(pos, node)
+            if node == playButton {
+                
                 let vc = self.view?.window?.rootViewController!;
                 vc?.performSegue(withIdentifier: "id2", sender: nil)
+                
             }
-
         }
     }
     
@@ -48,3 +47,4 @@ class MainMenuScene: SKScene {
         }
     }
 }
+
