@@ -38,7 +38,6 @@ class GameViewController: UIViewController {
                     sounds                                       */
     /* --------------------------------------------------------- */
     override func viewDidLoad() {
-        print("scnview loaded")
         setupScene()
         setupNodes()
         setupSounds()

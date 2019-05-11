@@ -16,8 +16,8 @@ class MainMenuScene: SKScene {
     var gameScene:SCNScene!
     var scrollingBG:ScrollingBackground?
     
-    override func didMove(to view: SKView) {
-        playButton = self.childNode(withName: "startButton") as? SKSpriteNode
+    override func didMove(to view: SKView) {        
+        playButton = self.childNode(withName: "levelButton") as? SKSpriteNode
         
         scrollingBG = ScrollingBackground.scrollingNodeWithImage(imageName: "loopBG", containerWidth: self.size.width)
         scrollingBG?.scrollingSpeed = 1.5

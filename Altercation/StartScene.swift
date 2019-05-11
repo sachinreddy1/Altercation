@@ -14,7 +14,7 @@ class StartScene: SKScene {
     
     var playButton:SKSpriteNode?
     var levelButton:SKSpriteNode?
-    var gameScene:SCNScene!
+    var gameScene:SKScene!
     var scrollingBG:ScrollingBackground?
     
     override func didMove(to view: SKView) {
@@ -34,9 +34,11 @@ class StartScene: SKScene {
             let pos = touch.location(in: self)
             let node = self.atPoint(pos)
             
-            if node == playButton {
-                let vc = self.view?.window?.rootViewController!;
-                vc?.performSegue(withIdentifier: "id1", sender: nil)
+            if node == playButton {                
+                let transition = SKTransition.push(with: SKTransitionDirection.up, duration: 0.25)
+                gameScene = SKScene(fileNamed: "MainMenuScene")
+                gameScene.scaleMode = .aspectFill
+                self.view?.presentScene(gameScene, transition: transition)
             }
             
             if node == levelButton {
