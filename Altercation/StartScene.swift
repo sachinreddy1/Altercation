@@ -44,7 +44,6 @@ class StartScene: SKScene {
             if node == levelButton {
                 let vc = self.view?.window?.rootViewController!;
                 vc?.performSegue(withIdentifier: "id2", sender: nil)
-                print("Touch.")
             }
             
         }
